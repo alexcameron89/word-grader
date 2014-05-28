@@ -29,9 +29,7 @@ grade_hash = {}
 word_array.each do |word|
   next if /[^a-z]/.match(word)
   @wordScore = 0
-  word.each_char do |c| 
-    @wordScore += alphascore[c.to_sym]
-  end
+  word.each_char { |c| @wordScore += alphascore[c.to_sym] }
   grade_hash[word] ||= @wordScore
 end
 
@@ -39,7 +37,5 @@ end
 
 puts "\n"
 puts "GRADES"
-grade_hash.each do |word,score|
-  puts "#{word}: #{score}"
-end
+grade_hash.each { |word,score| puts "#{word}: #{score}" }
 
